@@ -5,10 +5,7 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "env": {
-    "VITE_APP_TITLE": "@Hermes Pilot",
-    "VITE_APP_LOGO": "@https://hermespilot.com/logo.png"
-  },
+
   "rewrites": [
     {
       "source": "/(.*)",
