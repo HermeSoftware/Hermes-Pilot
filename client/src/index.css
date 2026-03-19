@@ -1,0 +1,287 @@
+/*
+ * HERMES PILOT — Design System
+ * Philosophy: Dark Obsidian + Champagne Accent
+ * Colors: Obsidian Black (#0B0B0C), Soft Black (#121214), Champagne Silk (#F5E9DA),
+ *         Warm White (#F8F8F6), Muted Gray (#A1A1AA), Light Gray (#E5E5E5)
+ * Fonts: Sora (headings) + Inter (body)
+ * Motion: Framer Motion staggered fade-up, hover scale, champagne shimmer
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Hermes Pilot Custom Colors */
+  --color-obsidian: #0B0B0C;
+  --color-soft-black: #121214;
+  --color-champagne: #F5E9DA;
+  --color-champagne-dim: #C9B89A;
+  --color-warm-white: #F8F8F6;
+  --color-muted-gray: #A1A1AA;
+  --color-light-gray: #E5E5E5;
+  --color-card-bg: #1A1A1E;
+  --color-card-border: rgba(245, 233, 218, 0.1);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.07 0.002 285);
+  --foreground: oklch(0.97 0.003 65);
+  --card: oklch(0.11 0.003 285);
+  --card-foreground: oklch(0.97 0.003 65);
+  --popover: oklch(0.11 0.003 285);
+  --popover-foreground: oklch(0.97 0.003 65);
+  --primary: oklch(0.88 0.04 65);
+  --primary-foreground: oklch(0.07 0.002 285);
+  --secondary: oklch(0.15 0.003 285);
+  --secondary-foreground: oklch(0.85 0.01 65);
+  --muted: oklch(0.13 0.003 285);
+  --muted-foreground: oklch(0.63 0.01 285);
+  --accent: oklch(0.88 0.04 65);
+  --accent-foreground: oklch(0.07 0.002 285);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.88 0.04 65);
+  --chart-1: oklch(0.88 0.04 65);
+  --chart-2: oklch(0.75 0.03 65);
+  --chart-3: oklch(0.63 0.02 65);
+  --chart-4: oklch(0.50 0.015 65);
+  --chart-5: oklch(0.35 0.01 65);
+  --sidebar: oklch(0.09 0.002 285);
+  --sidebar-foreground: oklch(0.97 0.003 65);
+  --sidebar-primary: oklch(0.88 0.04 65);
+  --sidebar-primary-foreground: oklch(0.07 0.002 285);
+  --sidebar-accent: oklch(0.15 0.003 285);
+  --sidebar-accent-foreground: oklch(0.97 0.003 65);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.88 0.04 65);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background-color: #0B0B0C;
+    color: #F8F8F6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      max-width: 1320px;
+    }
+  }
+
+  /* Hermes Pilot Custom Components */
+  .hp-section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #C9B89A;
+  }
+
+  .hp-card {
+    background: rgba(26, 26, 30, 0.8);
+    border: 1px solid rgba(245, 233, 218, 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+
+  .hp-card:hover {
+    border-color: rgba(245, 233, 218, 0.18);
+    background: rgba(30, 30, 36, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 233, 218, 0.06);
+  }
+
+  .hp-btn-primary {
+    background: #F5E9DA;
+    color: #0B0B0C;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.25s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hp-btn-primary:hover {
+    background: #fff8f0;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(245, 233, 218, 0.2);
+  }
+
+  .hp-btn-outline {
+    background: transparent;
+    color: #F5E9DA;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(245, 233, 218, 0.25);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hp-btn-outline:hover {
+    border-color: rgba(245, 233, 218, 0.5);
+    background: rgba(245, 233, 218, 0.05);
+  }
+
+  .hp-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245, 233, 218, 0.15), transparent);
+  }
+
+  .hp-metric {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    color: #F5E9DA;
+    letter-spacing: -0.04em;
+  }
+
+  .champagne-glow {
+    text-shadow: 0 0 40px rgba(245, 233, 218, 0.3);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(245, 233, 218, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 233, 218, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* Font weight utilities - Tailwind v4 compatible */
+@layer utilities {
+  .font-800 {
+    font-weight: 800;
+  }
+  .font-700 {
+    font-weight: 700;
+  }
+  .font-600 {
+    font-weight: 600;
+  }
+  .font-500 {
+    font-weight: 500;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0C;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 233, 218, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 233, 218, 0.3);
+}
+
+/* Selection */
+::selection {
+  background: rgba(245, 233, 218, 0.2);
+  color: #F5E9DA;
+}
